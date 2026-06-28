@@ -127,8 +127,8 @@ molecular-solubility-prediction/
 ├── data/
 │   └── delaney_solubility_with_descriptors.csv
 │
-├── notebooks/
-│   └── Molecular_Solubility_Prediction.ipynb
+├── notebook/
+│   └── solubility.ipynb
 │
 └── README.md
 ```
