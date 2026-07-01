@@ -135,10 +135,9 @@ molecular-solubility-prediction/
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Collaborators
 
-**Debashis Kar**
-
-B.Tech in Computer Science & Engineering
+**Debashis Kar** (www.linkedin.com/in/debashis-kar-0b033830a)
+**Divyom Srivastava** (https://www.linkedin.com/in/divyom-srivastava-260b95342/)
 
 ⭐ If you found this project useful, consider giving it a star!
