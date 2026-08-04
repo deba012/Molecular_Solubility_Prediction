@@ -64,32 +64,57 @@ These descriptors can be calculated directly from molecular structures without l
 ## ⚙️ Machine Learning Workflow
 
 ```text
-Load Dataset
-      │
-      ▼
-Data Preprocessing
-      │
-      ▼
-Feature Selection
-      │
-      ▼
-Train-Test Split (80:20)
-      │
-      ▼
-─────────────────────────────────
-│                               │
-▼                               ▼
-Linear Regression        Random Forest
-│                               │
-──────────────┬──────────────────
-              ▼
-      Model Evaluation
-              │
-              ▼
-        MSE • R² Score
-              │
-              ▼
-   Models saved (.pkl) → served via Flask
+            Molecular Solubility Prediction Pipeline
+
+                     ┌─────────────────────┐
+                     │   Load Dataset      │
+                     └─────────┬───────────┘
+                               │
+                               ▼
+                     ┌─────────────────────┐
+                     │ Data Preprocessing  │
+                     │ • Clean Missing Data│
+                     │ • Handle Outliers   │
+                     │ • Feature Encoding  │
+                     └─────────┬───────────┘
+                               │
+                               ▼
+                     ┌─────────────────────┐
+                     │ Feature Selection   │
+                     └─────────┬───────────┘
+                               │
+                               ▼
+                     ┌─────────────────────┐
+                     │ Train-Test Split    │
+                     │      (80 : 20)      │
+                     └─────────┬───────────┘
+                               │
+                 ┌─────────────┴─────────────┐
+                 │                           │
+                 ▼                           ▼
+      ┌───────────────────┐      ┌───────────────────┐
+      │ Linear Regression │      │  Random Forest    │
+      └─────────┬─────────┘      └─────────┬─────────┘
+                │                          │
+                └──────────────┬───────────┘
+                               ▼
+                    ┌─────────────────────┐
+                    │ Model Evaluation    │
+                    │ • Mean Squared Error│
+                    │ • R² Score          │
+                    └─────────┬───────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Best Model Saved    │
+                    │ (.pkl using Pickle) │
+                    └─────────┬───────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Flask Deployment    │
+                    │ Prediction API/UI   │
+                    └─────────────────────┘
 ```
 
 ---
