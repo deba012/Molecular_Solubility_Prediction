@@ -4,11 +4,12 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Regression-orange?logo=scikitlearn)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-000000?logo=flask)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter)
 
 </p>
 
-Predicting the **aqueous solubility (logS)** of small molecules using molecular descriptors and classical machine learning algorithms. This project implements an end-to-end regression pipeline using the **Delaney ESOL dataset**, comparing a **Linear Regression** model with a **Random Forest Regressor**.
+Predicting the **aqueous solubility (logS)** of small molecules using molecular descriptors and classical machine learning algorithms. This project implements an end-to-end regression pipeline using the **Delaney ESOL dataset**, comparing a **Linear Regression** model with a **Random Forest Regressor** — and ships an interactive **Flask web app** for making live predictions and exploring model performance.
 
 ---
 
@@ -19,6 +20,7 @@ Predicting the **aqueous solubility (logS)** of small molecules using molecular 
 * Evaluated model performance using **Mean Squared Error (MSE)** and **R² Score**
 * Visualized prediction performance using regression analysis
 * Demonstrated that simpler models can outperform more complex models on low-dimensional datasets
+* Deployed both trained models behind a **Flask backend** with a live prediction UI, actual-vs-predicted scatter plot, and a model comparison dashboard
 
 ---
 
@@ -85,7 +87,40 @@ Linear Regression        Random Forest
               │
               ▼
         MSE • R² Score
+              │
+              ▼
+   Models saved (.pkl) → served via Flask
 ```
+
+---
+
+## 🌐 Web App
+
+The trained models are served through a Flask backend with a browser-based UI for:
+
+* Entering molecular descriptor values and getting a **live logS prediction** from either model
+* Toggling between **Linear Regression** and **Random Forest**
+* Viewing an **actual vs. predicted scatter plot** per model
+* Viewing **train/test MSE and R²** for both models, LR coefficients, and RF feature importances
+
+### API Routes
+
+| Route       | Method | Description                                              |
+| ----------- | ------ | ---------------------------------------------------------|
+| `/`         | GET    | Renders the main UI                                      |
+| `/predict`  | POST   | Takes descriptor values + model choice, returns a logS prediction |
+| `/scatter`  | GET    | Returns actual vs. predicted points for a given model     |
+| `/metrics`  | GET    | Returns metrics, LR coefficients, and RF feature importances |
+
+### Running the App
+
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+The app runs at `http://127.0.0.1:5000/` by default.
 
 ---
 
@@ -95,6 +130,7 @@ Linear Regression        Random Forest
 * Pandas
 * NumPy
 * Scikit-learn
+* Flask
 * Matplotlib
 * Jupyter Notebook
 
@@ -122,7 +158,20 @@ Linear Regression outperformed the constrained Random Forest model, achieving a 
 ## 📁 Repository Structure
 
 ```text
-molecular-solubility-prediction/
+Molecular_Solubility_Prediction/
+│
+├── backend/
+│   ├── app.py         # Flask app (routes: /, /predict, /scatter, /metrics)
+│   ├── requirements.txt
+│   ├── model/
+│   │   ├── linear_regression_model.pkl
+│   │   └── random_forest_model.pkl
+│   ├── templates/
+│   │   └── index.html
+│   └── static/
+│       ├── css/
+│       ├── js/
+│       └── img/
 │
 ├── data/
 │   └── delaney_solubility_with_descriptors.csv
@@ -137,7 +186,7 @@ molecular-solubility-prediction/
 
 ## 👨‍💻 Collaborators
 
-- **Debashis Kar** (www.linkedin.com/in/debashis-kar-0b033830a)
+- **Debashis Kar** (https://www.linkedin.com/in/debashis-kar-0b033830a)
 - **Divyom Srivastava** (https://www.linkedin.com/in/divyom-srivastava-260b95342/)
 - **Vedansh Verma** (https://www.linkedin.com/in/vedansh-verma/)
 
