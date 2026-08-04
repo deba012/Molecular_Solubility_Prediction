@@ -139,5 +139,6 @@ molecular-solubility-prediction/
 
 - **Debashis Kar** (www.linkedin.com/in/debashis-kar-0b033830a)
 - **Divyom Srivastava** (https://www.linkedin.com/in/divyom-srivastava-260b95342/)
+- **Vedansh Verma** (https://www.linkedin.com/in/vedansh-verma/)
 
 ⭐ If you found this project useful, consider giving it a star!
